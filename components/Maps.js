@@ -34,7 +34,7 @@ const Maps = () => {
 
             }}
             fetchDetails={true}
-            placeholder='Search'
+            placeholder='Search location'
             enablePoweredByContainer={false}
             nearbyPlacesAPI='GooglePlacesSearch'
             debounce={400}
@@ -45,7 +45,8 @@ const Maps = () => {
             
         />
         
-        <Text>{destination.lat}</Text>
+        <Text>lat :{destination.lat}</Text>
+        <Text>long :{destination.long}</Text>
         
     
     </View>
