@@ -5,60 +5,47 @@
  * @format
  * @flow strict-local
  */
-
-import React from 'react';
+import create from 'zustand'
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import Maps from './components/Maps';
+import OtherScreen from './Screens/OtherScreen';
+import { useStore } from "./store";
+import React, {useState} from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
   View,
+  
 } from 'react-native';
-
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const Section = ({children, title}) => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-            
-          },
-        ]}>
-        kevin
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
 
 const App = () => {
   
+  const [count1,setCount1] = useState(0);
+  const {count2,increasecount2,kevin,changeKevin} = useStore(state => state)
 
+  const Stack = createNativeStackNavigator();
+  
   return (
-    <View style = {styles.container}>
-      <Text style = {styles.text}>kevin chester pineda</Text>
-    </View>
+    <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen 
+            name = "Home"
+            component={Maps}
+            options ={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen 
+            name = "anotherScreen"
+            component={OtherScreen}
+            options ={{
+              headerShown: false,
+            }}
+          />
+        </Stack.Navigator>
+    </NavigationContainer>
+
   );
 };
 
