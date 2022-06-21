@@ -1,16 +1,17 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import MapView from 'react-native-maps';
-
+import { useStore } from "../store";
 
 const OtherScreen = () => {
+    const {destination} = useStore(state => state)
     return (
         
             <MapView
             style={styles.map}
                 initialRegion={{
-                latitude: 37.78825,
-                longitude: -122.4324,
+                latitude: destination.lat,
+                longitude: destination.long,
                 latitudeDelta: 0.0922,
                 longitudeDelta: 0.0421,
                 }}
